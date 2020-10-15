@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="col m3">
+     <div class="collection">
+    {% for category in categories %}
+        <a href="/?category={{category.id}}" class="collection-item">{{category.name}}</a>
+    {% endfor %}
+      </div>
+</div>
+<div class="col m9">
+<div class="row">
+    {% for product in products %}
+    <div class="col s12 m4">
+      <div class="card my__card">
+        <div class="card-image">
+          <img class="image" src="{{product.image.url}}">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+        </div>
+        <div class="card-content card__content">
+        <h4>{{product.name}}</h4>
+          <p>{{product.description}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock content %}

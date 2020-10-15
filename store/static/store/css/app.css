@@ -1,0 +1,16 @@
+.image {
+	height: 300px;
+	width: 100px;
+}
+
+.my__nav__logo {
+	margin-left: 30px;
+}
+
+.my__card {
+	height: 500px;
+}
+
+.card__content {
+	margin-bottom: 20px;
+}
