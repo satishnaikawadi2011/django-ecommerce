@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static 'store/css/materialize.css' %}">
     <link rel="stylesheet" href="{% static 'store/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/mdb.min.css' %}">
     {% block appcss %}
         <link rel="stylesheet" href="{% static 'store/css/app.css' %}">
     {% endblock appcss %}
 </head>
 <body>
 {% include 'navbar.html' %}
-<div class="row">
-<div class="col s10 m12">
+<div class="container-fluid">
+<div class="row d-flex justify-content-center">
 {% block content %}
 {% endblock content %}
 </div>
 </div>
-    <script src="{% static 'core/js/jquery.js'%}"></script>
-    <script src="{% static 'core/js/popper.js'%}"></script>
-    <script src="{% static 'core/js/bootstrap.js'%}"></script>
-<script src="{% static 'store/js/materialize.js' %}"></script>
+    <script src="{% static 'store/js/jquery.js'%}"></script>
+    <script src="{% static 'store/js/popper.js'%}"></script>
+    <script src="{% static 'store/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'store/js/mdb.min.js'%}"></script>   
 </body>
 </html>

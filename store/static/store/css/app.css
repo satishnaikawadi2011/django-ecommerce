@@ -1,6 +1,5 @@
-.image {
+.my__image {
 	height: 300px;
-	width: 100px;
 }
 
 .my__nav__logo {
@@ -16,4 +15,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.link__icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
