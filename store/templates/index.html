@@ -3,6 +3,7 @@
 {% block content %}
 <div class="col m3">
      <div class="collection">
+     <a href="/" class="collection-item">All</a>
     {% for category in categories %}
         <a href="/?category={{category.id}}" class="collection-item">{{category.name}}</a>
     {% endfor %}
@@ -12,14 +13,15 @@
 <div class="row">
     {% for product in products %}
     <div class="col s12 m4">
-      <div class="card my__card">
+      <div class="card">
         <div class="card-image">
           <img class="image" src="{{product.image.url}}">
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
         </div>
-        <div class="card-content card__content">
-        <h4>{{product.name}}</h4>
-          <p>{{product.description}}</p>
+        <div class="card-content center-align">
+        <h5>Rs {{product.price}}</h5>
+        <h5>{{product.name}}</h5>
+        <a class="waves-effect waves-light btn-small">More Details</a>
         </div>
       </div>
     </div>

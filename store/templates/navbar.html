@@ -1,11 +1,12 @@
 {% load static %}
   <nav>
     <div class="nav-wrapper teal">
-      <a href="#" class="brand-logo my__nav__logo">Ecommerce Shop</a>
+      <a href="/" class="brand-logo my__nav__logo">Ecommerce Shop</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Cart</a></li>
-        <li><a href="badges.html">Login</a></li>
-        <li><a href="collapsible.html">Register</a></li>
+        <li><a href="#"style="display:flex;"><i class="material-icons mr-2">add_shopping_cart</i>Cart</a></li>
+        <li><a href="/login" style="display:flex;"><i class="material-icons mr-2">vpn_key</i>Login</a></li>
+        <li><a href="/register"style="display:flex;"><i class="material-icons mr-2">how_to_reg</i>Register</a></li>
       </ul>
     </div>
   </nav>
+  {% comment %} style="display:flex;" {% endcomment %}
