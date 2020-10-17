@@ -2,15 +2,19 @@
 {% load static %}
 {% block content %}
 <!-- Default form login -->
-<form class="col-md-4 text-center border border-light p-5" action="#!">
-
+<form class="col-md-4 text-center border border-light p-5" action="/login" method="POST">
+    {% csrf_token %}
     <p class="h4 mb-4">Sign in</p>
-
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+ {{error}}
+</div>
+{% endif %}
     <!-- Email -->
-    <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <input type="email" value="{{email}}" id="email" name="email" class="form-control mb-4" placeholder="E-mail">
 
     <!-- Password -->
-    <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+    <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Password">
 
 
     <!-- Sign in button -->
