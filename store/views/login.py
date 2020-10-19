@@ -20,6 +20,8 @@ class Login(View):
         customer = Customer.get_cusomer_by_email(email)
         error_message =  self.validateLogin(customer,email,password)
         if not error_message:
+            request.session['customer_id'] = customer.id
+            request.session['email'] = customer.email
             return redirect('homePage')
         else:
             return render(request,'login.html',{'error':error_message,'email':email})
