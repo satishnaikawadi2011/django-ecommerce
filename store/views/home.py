@@ -60,7 +60,10 @@ def decreament_cart_quantity(request):
             id = request.GET.get('id')
             cart = request.session.get('cart')
             quantity = cart.get(id)
-            cart[id] = quantity - 1
+            if quantity == 1:
+                cart.pop(id)
+            else:
+                cart[id] = quantity - 1
             request.session['cart'] = cart
             return JsonResponse({'quantity':quantity - 1})  
 

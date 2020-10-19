@@ -37,3 +37,7 @@ class Login(View):
         elif not check_password(password,customer.password):
             error_message = "Invalid credentials , try again !"
         return error_message
+
+def logout(request):
+    request.session.clear()
+    return redirect('login')

@@ -13,7 +13,6 @@
         <a href="/?category={{category.id}}">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
     {{category.name}}
-    {% comment %} <span class="badge badge-primary badge-pill">14</span> {% endcomment %}
   </li>
         </a>
         </ul>
@@ -24,7 +23,7 @@
     {% for product in products %}
       <div class="col-sm-10 col-md-4">
             <!-- Card Dark -->
-<div class="card mb-3">
+<div id={{product.id}} class="card mb-3">
   <!-- Card image -->
   <div class="view overlay">
     <img class="card-img-top img-fluid my__image" src="{{product.image.url}}"
@@ -34,18 +33,14 @@
     </a>
   </div>
   <!-- Card content -->
-  {% comment %} onClick="clicking({{product.id}});" {% endcomment %}
   <div class="card-body elegant-color white-text">
-  
-  {% comment %} <button onclick="clicking({{product.id}});"  id="cartBtn" class="float-right btn-floating btn-lg btn-default mt-2" data-toggle="tooltip" data-placement="top"
-  title="Add to cart"><i class="material-icons">add_shopping_cart</i></button> {% endcomment %}
     <h4 id="price" class="text-center">
-      Rs {{product.price}}
+      {{product.price|currency}}
     </h4>
     <h4 class="card-title text-center">{{product.name}}</h4>
     <span class="d-flex justify-content-center"><button type="button" class="btn btn-outline-info btn-rounded waves-effect">More Details</button></span>
   </div>
-      <div class="card-footer row stylish-color white-text text-center no-gutters p-0">
+      <div id="footer-{{product.id}}" class="card-footer row stylish-color white-text text-center no-gutters p-0">
   {% if product|is_in_cart:request.session.cart %}
       
       <button onClick="decreament({{product.id}});" data-id="{{product.id}}" id="decreament-{{product.id}}" class="btn btn-block btn-info col-2">-</button>
@@ -63,16 +58,13 @@
     </div>
 </div>
 <script>
-{% comment %} let increa = document.getElementById('increament')
-let decrea = document.getElementById('decreament')
-let quantity = document.getElementById('qnt')
-increa.addEventListener('click', increament,false)
-decrea.addEventListener('click', decreament,false) {% endcomment %}
    function clicking(id){
        var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
      console.log(this.responseText)
+     location.reload()
+     location.replace(`http://127.0.0.1:8000/#${id}`)
     }
   };
   let url = 'http://127.0.0.1:8000/add_to_cart?id='+id
@@ -99,13 +91,17 @@ let quantity = document.getElementById('qnt-'+id)
     }
 
     function decreament(id){
-let quantity = document.getElementById('qnt-'+id)
+     let quantity = document.getElementById('qnt-'+id)
       console.log(id)
       var xhttp = new XMLHttpRequest();
        xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
      console.log(JSON.parse(this.responseText).quantity)
      quantity.innerHTML = JSON.parse(this.responseText).quantity
+     if(JSON.parse(this.responseText).quantity === 0){
+       location.reload()
+       location.replace(`http://127.0.0.1:8000/#${id}`)
+     }
         }
       };
       let url = 'http://127.0.0.1:8000/decreament_cart_quantity?id='+id
@@ -115,13 +111,3 @@ let quantity = document.getElementById('qnt-'+id)
 
 </script>
 {% endblock content %}
-      {% comment %} console.log("dat-id",increament.getAttribute("data-id"))
-             var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     console.log(JSON.parse(this.responseText).quantity)
-    }
-  };
-  let url = 'http://127.0.0.1:8000/increament_cart_quantity?id='+id
-  xhttp.open("GET",url,true);
-  xhttp.send(); {% endcomment %}

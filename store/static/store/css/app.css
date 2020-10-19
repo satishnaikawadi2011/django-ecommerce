@@ -17,6 +17,10 @@
 	justify-content: center;
 }
 
+.my__border {
+	border: 1px solid black;
+}
+
 .link__icon {
 	display: flex;
 	justify-content: center;

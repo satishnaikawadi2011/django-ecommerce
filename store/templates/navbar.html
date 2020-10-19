@@ -8,8 +8,31 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
+      {% if request.session.customer_id %}
+            <li class="nav-item">
+        <a class="nav-link" href="/cart">
+        <div class="link__icon">
+          <i class="material-icons mr-2">shopping_cart</i><span>Cart</span>
+          </div>
+        </a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="/orders">
+        <div class="link__icon">
+          <i class="material-icons mr-2">receipt</i><span>Orders</span>
+          </div>
+        </a>
+      </li>
+                  <li class="nav-item">
+        <a class="nav-link" href="/logout">
+        <div class="link__icon">
+          <i class="material-icons mr-2">exit_to_app</i><span>Logout</span>
+          </div>
+          </a>
+      </li>
+      {% else %}
+                  <li class="nav-item">
+        <a class="nav-link" href="/cart">
         <div class="link__icon">
           <i class="material-icons mr-2">shopping_cart</i><span>Cart</span>
           </div>
@@ -28,6 +51,7 @@
           </div>
           </a>
       </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
