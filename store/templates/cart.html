@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 {% load cart %}
 <div class="container text-center">
+{% if not products %}
+<h1 class="text-center mb-5">Your cart is empty</h1>
+{% else %}
 <h1 class="text-center mb-5">Your Cart</h1>
 {% include 'cart-columns.html' %}
 {% for product in products %}
@@ -30,10 +34,12 @@
 <div class="col-md-4 offset-md-8 my__border p-3 mb-4">
 <h5 class="font-weight-bold">Total Cart Items : {{request.session.cart|total_cart_items}}</h5>
 <h5 class="font-weight-bold">Total Cart Price : {{products|total_cart_price:request.session.cart|currency}}</h5>
-<button class="btn btn-rounded btn-success">
+<button class="btn btn-rounded btn-success"  href="#" data-toggle="modal" data-target="#orangeModalSubscription">
 Checkout
 </button>
 </div>
 </div>
+{% endif %}
 </div>
+{% include 'modal.html' %}
 {% endblock content %}

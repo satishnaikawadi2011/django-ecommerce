@@ -25,6 +25,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+}
+
+.my__badge {
+	position: absolute;
+	left: 0px;
+	bottom: 17px;
 }
 
 button {

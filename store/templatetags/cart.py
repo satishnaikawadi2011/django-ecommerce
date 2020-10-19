@@ -43,3 +43,7 @@ def total_cart_items(cart):
 @register.filter(name="currency")
 def currency(number):
     return "₹ " +str(number)
+
+@register.filter(name="multiply")
+def multiply(num1,num2):
+    return num1 * num2
