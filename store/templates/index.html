@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load cart %}
+<div class="row d-flex justify-content-center" style="margin-top:100px;">
 <div class="col-md-3 fixed-top" id="category" style="margin-top:100px;">
    <ul class="list-group">
            <a href="/">
@@ -38,7 +39,7 @@
       {{product.price|currency}}
     </h4>
     <h4 class="card-title text-center">{{product.name}}</h4>
-    <span class="d-flex justify-content-center"><button type="button" class="btn btn-outline-info btn-rounded waves-effect">More Details</button></span>
+    <span class="d-flex justify-content-center"><a href={% url 'details' product.id %} type="button" class="btn btn-outline-info btn-rounded waves-effect">More Details</a></span>
   </div>
       <div id="footer-{{product.id}}" class="card-footer row stylish-color white-text text-center no-gutters p-0">
   {% if product|is_in_cart:request.session.cart %}
@@ -56,6 +57,8 @@
       </div>
     {% endfor %}
     </div>
+</div>
+
 </div>
 <script>
    function clicking(id){

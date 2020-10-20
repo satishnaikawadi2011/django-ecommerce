@@ -24,10 +24,10 @@
 <body>
 {% include 'navbar.html' %}
 <div class="container-fluid">
-<div class="row d-flex justify-content-center" style="margin-top:100px;">
+{% comment %} <div class="row d-flex justify-content-center" style="margin-top:100px;"> {% endcomment %}
 {% block content %}
 {% endblock content %}
-</div>
+{% comment %} </div> {% endcomment %}
 </div>
     {% comment %} <script src="{% static 'store/js/jquery.js'%}"></script>
     <script src="{% static 'store/js/popper.js'%}"></script>

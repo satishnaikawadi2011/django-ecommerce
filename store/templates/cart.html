@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load cart %}
+<div class="row d-flex justify-content-center" style="margin-top:100px;">
 <div class="container text-center">
 {% if not products %}
 <h1 class="text-center mb-5">Your cart is empty</h1>
@@ -40,6 +41,7 @@ Checkout
 </div>
 </div>
 {% endif %}
+</div>
 </div>
 {% include 'modal.html' %}
 {% endblock content %}

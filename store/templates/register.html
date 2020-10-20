@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="row d-flex justify-content-center" style="margin-top:100px;">
 <!-- Default form register -->
 <form class="text-center border border-light p-5" action="/register" method="POST">
     {% csrf_token %}
@@ -44,4 +45,5 @@
         <a href="" target="_blank">terms of service</a>
 
 </form>
+</div>
 {% endblock content %}

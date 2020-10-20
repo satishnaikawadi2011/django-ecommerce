@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.hashers import make_password,check_password
 from ..models.product import Product
 from ..models.category import Category
@@ -9,7 +9,9 @@ from django.views import View
 
 
 class Login(View):
+    returnUrl = None
     def get(self,request):
+        Login.returnUrl = request.GET.get('return_url')
         return render(request,'login.html')
 
     def post(self,request):
@@ -22,7 +24,11 @@ class Login(View):
         if not error_message:
             request.session['customer_id'] = customer.id
             request.session['email'] = customer.email
-            return redirect('homePage')
+            if Login.returnUrl:
+                return HttpResponseRedirect(Login.returnUrl)
+            else:
+                Login.returnUrl = None
+                return redirect('homePage')
         else:
             return render(request,'login.html',{'error':error_message,'email':email})
 

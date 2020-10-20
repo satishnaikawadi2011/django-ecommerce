@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="row d-flex justify-content-center" style="margin-top:100px;">
 <!-- Default form login -->
 <form class="col-md-4 text-center border border-light p-5" action="/login" method="POST">
     {% csrf_token %}
@@ -26,4 +27,5 @@
     </p>
 
 </form>
+</div> 
 {% endblock content %}

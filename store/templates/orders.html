@@ -2,6 +2,7 @@
 {% load static %}
 {% load cart %}
 {% block content %}
+<div class="row d-flex justify-content-center" style="margin-top:100px;">
 <div class="container text-center">
 {% if request.session.cart == '{}' %}
 <h1 class="text-center mb-5">Your have no orders to show.</h1>
@@ -45,5 +46,6 @@ Pending
 </div>
 {% endfor %}
 {% endif %}
+</div>
 </div>
 {% endblock content %}
